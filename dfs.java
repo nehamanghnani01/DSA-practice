@@ -62,7 +62,7 @@ public class dfs {
                 List<Integer> neighbours = adjList.get(element);
                 if (neighbours != null && !neighbours.isEmpty()) {
                     for (int neighbour : neighbours) {
-                        if (!visited[neighbour]) {
+                        if (!visited[neighbour]) { // avoid revisiting neighbour nodes again
                             visited[neighbour] = true;
                             stack.push(neighbour);
                         }
