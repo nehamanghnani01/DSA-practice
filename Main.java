@@ -9,6 +9,10 @@ class Main {
         list.addNode(25);
         list.addNode(42);
 
+        list.insertAtBeginning(100);
+        list.deleteAtPosition(2);
+        list.insertAtPosition(26, 2);
+
         list.printLinkedList();
     }
 }
