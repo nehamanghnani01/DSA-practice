@@ -1,6 +1,6 @@
 import LinkedListImplementation.*;
 
-class Main {
+class LinkedListMain {
     public static void main(String[] args) {
 
         MyLinkedList<Integer> list = new MyLinkedList<>();
