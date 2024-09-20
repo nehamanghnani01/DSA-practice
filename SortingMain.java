@@ -32,6 +32,15 @@ class SortingMain {
         for (int i : bubbleSortArr) {
             System.out.print(i + ",");
         }
+
+        System.out.println();
+        MergeSort mergeSort = new MergeSort();
+        int[] mergeSortArr = mergeSort.sort(arr, 0, arr.length - 1);
+
+        System.out.println("Merge Sort result");
+        for (int i : mergeSortArr) {
+            System.out.print(i + ",");
+        }
     }
 
 }
