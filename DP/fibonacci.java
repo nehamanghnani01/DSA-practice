@@ -11,6 +11,7 @@ public class fibonacci {
 
         System.out.println("fib = " + f);
         System.out.println("fib answer in top down approach = " + f_topdown);
+        System.out.println("fib answer with optimized space = " + fib_optimized(n));
     }
 
     // Bottom up approach - have base cases and then build up the solution
@@ -43,5 +44,31 @@ public class fibonacci {
         }
 
         return dp[n];
+    }
+
+    // optimizing space complexity
+
+    public static int fib_optimized(int n) {
+        int prev, prev2prev, curr;
+
+        prev2prev = 0;
+        prev = 1;
+        if (n == 0) {
+            return prev2prev;
+        }
+        if (n == 1) {
+            return prev;
+        }
+        curr = prev;
+        int i = 0;
+
+        while (i < n - 1) {
+            curr = prev + prev2prev;
+            prev2prev = prev;
+            prev = curr;
+            i++;
+        }
+
+        return curr;
     }
 }
