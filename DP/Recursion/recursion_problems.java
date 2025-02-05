@@ -72,7 +72,7 @@ public class recursion_problems {
 
         ss.add(arr[index]);
         printSubsequences(arr, ss, n, index + 1);
-        ss.remove(ss.size() - 1);
+        ss.remove(Integer.valueOf(arr[index]));
         printSubsequences(arr, ss, n, index + 1);
     }
 
@@ -93,7 +93,7 @@ public class recursion_problems {
         ss.add(arr[index]);
         runningSum = runningSum + arr[index];
         printSequencesEqualK(arr, ss, n, runningSum, k, index + 1);
-        ss.remove(ss.size() - 1);
+        ss.remove(Integer.valueOf(arr[index]));
         runningSum = runningSum - arr[index];
         printSequencesEqualK(arr, ss, n, runningSum, k, index + 1);
 
