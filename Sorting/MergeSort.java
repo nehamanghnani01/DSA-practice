@@ -8,7 +8,8 @@ public class MergeSort {
             int m = l + (r - l) / 2;
             sort(arrayList, l, m);
             sort(arrayList, m + 1, r);
-            merge(arrayList, l, m, r);
+            // merge(arrayList, l, m, r);
+            mergeAnotherWay(l, m, m, arrayList);
         }
 
         return arrayList;
@@ -58,5 +59,39 @@ public class MergeSort {
 
         return arrayList;
 
+    }
+
+    public static int[] mergeAnotherWay(int low, int mid, int high, int[] arr) {
+        int n1 = mid - low + 1;
+        int n2 = high - mid;
+
+        int[] mergedArr = new int[n1 + n2];
+        int i = low, j = mid + 1, k = 0;
+        while (i <= mid && j <= high) {
+            if (arr[i] < arr[j]) {
+                mergedArr[k] = arr[i];
+                i++;
+            } else {
+                mergedArr[k] = arr[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= mid) {
+            mergedArr[k] = arr[i];
+            i++;
+            k++;
+        }
+        while (j <= high) {
+            mergedArr[k] = arr[j];
+            j++;
+            k++;
+        }
+        k = 0;
+        for (int p = low; p <= high; p++) {
+            arr[p] = mergedArr[k];
+            k++;
+        }
+        return arr;
     }
 }
