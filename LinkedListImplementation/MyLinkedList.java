@@ -90,4 +90,21 @@ public class MyLinkedList<E> {
         }
     }
 
+    // recursive method to reverse list
+    public Node<E> reverseList(Node<E> head) {
+        if (head == null) {
+            head = this.head;
+        }
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node<E> newHead = reverseList(head.next);
+        Node<E> front = head.next;
+        front.next = head;
+        head.next = null;
+
+        return newHead;
+    }
+
 }
