@@ -12,6 +12,18 @@ public class heaps {
         System.out.println("printing heap status now - ");
         maxHeap.print();
 
+        int[] arr1 = { -1, 54, 53, 55, 52, 50 };
+        int n = 5;
+        System.out.println("heapify the array = arr1");
+        for (int i = 1; i <= (n / 2); i++) {
+            maxHeap.heapify(arr1, n, i);
+        }
+        System.out.println("Heapified array = ");
+        for (int i = 1; i <= n; i++) {
+            System.out.print(arr1[i] + ", ");
+        }
+        System.out.println();
+
     }
 
 }
@@ -75,6 +87,27 @@ class Heap {
             }
 
         }
+    }
+
+    public void heapify(int[] arr, int n, int i) {
+
+        int largest = i;
+
+        int leftChild = 2 * largest;
+        int rightChild = 2 * largest + 1;
+
+        if (leftChild < n && arr[largest] < arr[leftChild]) {
+            int temp = arr[largest];
+            arr[largest] = arr[leftChild];
+            arr[leftChild] = temp;
+            heapify(arr, n, leftChild);
+        } else if (rightChild < n && arr[largest] < arr[rightChild]) {
+            int temp = arr[largest];
+            arr[largest] = arr[rightChild];
+            arr[rightChild] = temp;
+            heapify(arr, n, rightChild);
+        }
+
     }
 
     public void print() {
