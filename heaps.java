@@ -5,6 +5,10 @@ public class heaps {
         Heap maxHeap = new Heap();
         maxHeap.insert(1);
         maxHeap.insert(2);
+        maxHeap.insert(3);
+        maxHeap.insert(4);
+        // maxHeap.remove();
+        maxHeap.insert(5);
         System.out.println("printing heap status now - ");
         maxHeap.print();
 
@@ -27,13 +31,11 @@ class Heap {
         arr[index] = value;
         size++;
 
-        // int parentIndex = (index) / 2;
-
         // if parentIndex is less than inserted child, then swap with parent
         while (index >= 2) {
-            System.out.println("inside while -- at index = " + index);
+            // System.out.println("inside while -- at index = " + index);
             int parentIndex = (index) / 2;
-            System.out.println("parent index = " + parentIndex);
+            // System.out.println("parent index = " + parentIndex);
 
             if (parentIndex >= 1 && arr[parentIndex] < arr[index]) {
                 int temp = arr[parentIndex];
@@ -42,10 +44,37 @@ class Heap {
             }
             index = parentIndex;
         }
-        if (index < 2) {
-            System.out.println("skipped");
-        }
+        // if (index < 2) {
+        // System.out.println("skipped");
+        // }
 
+    }
+
+    public void remove() {
+        System.out.println("size whrn remove called = " + size);
+        if (size > 1) {
+            arr[1] = arr[size];
+            arr[size] = 0;
+            size--;
+
+            int index = 1;
+            while (index < size) {
+                int leftChild = 2 * index;
+                int rightChild = 2 * index + 1;
+
+                if (leftChild < size && arr[index] < arr[leftChild]) {
+                    int temp = arr[index];
+                    arr[index] = arr[leftChild];
+                    arr[leftChild] = temp;
+                } else if (rightChild < size && arr[index] < arr[rightChild]) {
+                    int temp = arr[index];
+                    arr[index] = arr[rightChild];
+                    arr[rightChild] = temp;
+                }
+                index = leftChild;
+            }
+
+        }
     }
 
     public void print() {
